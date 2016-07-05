@@ -1,6 +1,0 @@
-[ 2016-06-19T22:36:29+08:00 ] 180.119.219.103 /index.php?g=Admin&m=route&a=index
-NOTIC: D方法实例化没找到模型类Common\Model\RouteModel
-
-[ 2016-06-19T22:36:32+08:00 ] 180.119.219.103 /index.php?g=Admin&m=route&a=add
-NOTIC: D方法实例化没找到模型类Common\Model\RouteModel
-
