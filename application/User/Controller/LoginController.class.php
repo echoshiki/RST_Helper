@@ -8,7 +8,7 @@ class LoginController extends HomebaseController {
 	
 	function index(){
 	    if(sp_is_user_login()){ //已经登录时直接跳到首页
-	        redirect(__ROOT__."/");
+	        redirect(__ROOT__.U('user/center/index'));
 	    }else{
 	        $this->display(":login");
 	    }
@@ -35,7 +35,6 @@ class LoginController extends HomebaseController {
 	function forgot_password(){
 		$this->display(":forgot_password");
 	}
-	
 	
 	function doforgot_password(){
 		if(IS_POST){
@@ -146,7 +145,6 @@ hello;
 	
     //登录验证
     function dologin(){
-
     	if(!sp_check_verify_code()){
     		$this->error("验证码错误！");
     	}
@@ -292,6 +290,7 @@ hello;
             echo uc_user_synlogin($uc_uid);
         }
         //exit();
+        
         if(!empty($result)){
             if(sp_compare_password($password, $result['user_pass'])|| $ucenter_login_ok){
                 $_SESSION["user"]=$result;
@@ -301,13 +300,30 @@ hello;
                     'last_login_ip' => get_client_ip(0,true),
                 );
                 $users_model->where("id=".$result["id"])->save($data);
-                $redirect=empty($_SESSION['login_http_referer'])?__ROOT__."/":$_SESSION['login_http_referer'];
+                $redirect=empty($_SESSION['login_http_referer'])?__ROOT__.U('user/center/index'):$_SESSION['login_http_referer'];
                 $_SESSION['login_http_referer']="";
                 $ucenter_old_user_login_msg="";
         
                 if($ucenter_old_user_login){
                     //$ucenter_old_user_login_msg="老用户请在跳转后，再次登陆";
                 }
+
+                $url="http://lxh.yz-rst.com/index.php?c=user&a=login";  
+                        $post_data=array (  
+                            "username"=>$username,  
+                            "password"=>$password  
+                            );  
+                        $ch=curl_init();  
+                        curl_setopt($ch,CURLOPT_URL,$url);  
+                        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);  
+                        curl_setopt($ch,CURLOPT_POST,1);  
+                        curl_setopt($ch,CURLOPT_POSTFIELDS,$post_data);  
+                        $output=curl_exec($ch);  
+                        curl_close($ch);
+                        // echo $output;
+
+                        $_SESSION['sceneuser'] = $username;
+                        $_SESSION['scenepass'] = $password;
         
                 $this->success("登录验证成功！", $redirect);
             }else{

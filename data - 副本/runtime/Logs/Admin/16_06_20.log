@@ -1,0 +1,17 @@
+[ 2016-06-20T10:21:23+08:00 ] 49.86.25.26 /index.php?g=Admin&m=public&a=dologin
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-06-20T10:21:29+08:00 ] 49.86.25.26 /index.php?g=Admin&m=public&a=dologin
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `rst_users` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `rst_users` WHERE `user_login` = 'admin' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `rst_role_user` [ RunTime:0.0000s ]
+SQL: SELECT `role_id` FROM rst_role_user a INNER JOIN rst_role as b on a.role_id =b.id  WHERE `user_id` = '1' AND `status` = 1  [ RunTime:0.0000s ]
+SQL: UPDATE `rst_users` SET `user_login`='admin',`user_pass`='###d813c8ba5e789df62d1c1c5515cad66b',`user_nicename`='admin',`user_email`='echoshiki@outlook.com',`user_url`='',`avatar`=NULL,`sex`='0',`birthday`=NULL,`signature`=NULL,`last_login_ip`='49.86.25.26',`last_login_time`='2016-06-20 10:21:29',`create_time`='2016-06-15 05:35:52',`user_activation_key`='',`user_status`='1',`score`='0',`user_type`='1',`coin`='0',`mobile`='' WHERE `id` = '1' [ RunTime:0.0000s ]
+

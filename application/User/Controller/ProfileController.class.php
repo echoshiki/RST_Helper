@@ -16,6 +16,13 @@ class ProfileController extends MemberbaseController {
 		$this->assign($this->user);
     	$this->display();
     }
+
+    public function scenelogin() {
+        // $this->assign($this->user);
+        // print_r($this->user['user_email']);
+        // echo $_SESSION['sceneuser'];
+        $this->display();
+    }
     
     public function edit_post() {
     	if(IS_POST){

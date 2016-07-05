@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$site_name}</title>
+<meta name="keywords" content="{$site_seo_keywords}" />
+<meta name="description" content="{$site_seo_description}">
+<meta name="author" content="ThinkCMF">
+<tc_include file="Public:head" />
+</head>
+<body class="body-white" id="top">
+	<tc_include file="Public:nav" />
+
+		<div class="container tc-main">
+                <div class="row">
+                    <div class="span3">
+	                    <tc_include file="Public:usernav"/>
+                    </div>
+                    <div class="span9">
+                           <div class="tabs">
+                               <ul class="nav nav-tabs">
+									<li class="active"><a href="javascript:;">产品一览</a></li>
+									<li><a href="{:U('UserProduct/add',array('category'=>empty($category['category_id'])?'':$category['category_id']))}" target="_self">添加产品</a></li>
+								</ul>
+                               <div class="tab-content">
+                                   <div class="tab-pane active" id="one">
+                                   		<table class="table table-hover table-bordered table-list">
+											<thead>
+												<tr>
+													<th>序号</th>
+													<th>产品名称</th>
+													<th>分类</th>
+													<th>销售区域</th>
+													<th width="100">发布日期</th>
+													<th width="50">状态</th>
+													<th width="70">操作</th>
+												</tr>
+											</thead>
+											<php>
+												$status = array("1"=>"已审核","0"=>"未审核");
+												$i = 0;
+											</php>
+											<foreach name="products" item="vo">
+											<php>$i++;</php>
+											<tr>
+												<td>{$i}</td>
+												<td><a href="{:U('product/article/index',array('id'=>$vo['tid']))}" target="_blank"> <span>{$vo.title}</span></a></td>
+												<td>{$categories[$vo['category_id']]}</td>
+												<th>{$vo.area}</th>
+												<td><?php echo date("Y-m-d",strtotime($vo['date'])); ?></td>
+												<td>{$status[$vo['status']]}</td>
+												<td>
+													<if condition="$vo['status']==1">
+														<a href="{:U('product/article/index',array('id'=>$vo['tid']))}" target="_blank">查看</a>
+													<else />	
+														<a href="{:U('UserProduct/edit',array('category'=>empty($category['category_id'])?'':$category['category_id'],'id'=>$vo['id']))}">编辑</a> | 
+														<a href="{:U('UserProduct/delete',array('category'=>empty($category['category_id'])?'':$category['category_id'],'tid'=>$vo['tid']))}" class="js-ajax-delete" data-msg="你确定删除吗？">删除</a>
+													</if>
+												</td>
+											</tr>
+											</foreach>
+										</table>
+                                   </div>
+                               </div>							
+                           </div>
+                    </div>
+                </div>
+
+		<tc_include file="Public:footer" />
+
+	</div>
+	<!-- /container -->
+	<tc_include file="Public:scripts" />
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

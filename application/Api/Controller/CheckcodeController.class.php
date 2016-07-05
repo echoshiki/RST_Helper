@@ -62,7 +62,7 @@ class CheckcodeController extends Controller {
 	        'imageH'    =>  $height,               // 验证码图片高度
 	        'imageW'    =>  $width,               // 验证码图片宽度
 	        'length'    =>  !empty($length)?$length:4,               // 验证码位数
-	        'bg'        =>  array(243, 251, 254),  // 背景颜色
+	        'bg'        =>  array(255, 255, 255),  // 背景颜色
 	        'reset'     =>  true,           // 验证成功后是否重置
     	);
     	$Verify = new \Think\Verify($config);

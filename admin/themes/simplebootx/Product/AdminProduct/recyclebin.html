@@ -1,0 +1,104 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('AdminProduct/recyclebin')}">产品回收站</a></li>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('AdminProduct/recyclebin')}">
+			分类：
+			<select class="select_2" name="category">
+				<option value='0'>全部</option>{$taxonomys}
+			</select> &nbsp;&nbsp;
+			时间： 
+			<input type="text" name="start_time" class="js-date" value="{$formget.start_time}" style="width: 80px;" autocomplete="off">-
+			<input type="text" class="js-date" name="end_time" value="{$formget.end_time}" style="width: 80px;" autocomplete="off"> &nbsp; &nbsp;
+			关键字：
+			<input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword}" placeholder="请输入关键字...">
+			<input type="submit" class="btn btn-primary" value="搜索" />
+		</form>
+		<form class="js-ajax-form" method="post">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminProduct/clean')}" data-subcheck="true" data-msg="你确定删除吗？">{:L('DELETE')}</button>
+			</div>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">ID</th>
+						<th>{:L('TITLE')}</th>
+						<th>{:L('CATEGORY')}</th>
+						<th width="50">{:L('KEYWORDS')}</th>
+						<th width="50">{:L('BRAND')}</th>
+						<th width="50">{:L('AREA')}</th>
+						<th width="50">{:L('BUSINESS_TYPE')}</th>
+						<th width="50">{:L('TYPE')}</th>
+						<th width="50">{:L('THUMBNAIL')}</th>
+						<th width="80">{:L('AUTHOR')}</th>
+						<th width="70">{:L('PUBLISH_DATE')}</th>
+						<th width="50">{:L('STATUS')}</th>
+						<th width="70">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<php>
+				$status=array("1"=>"已审核","0"=>"未审核");
+				$top_status=array("1"=>"已置顶","0"=>"未置顶");
+				$recommend_status=array("1"=>"已推荐","0"=>"未推荐");
+				$business_type = C('BUSINESS_TYPE');
+				$type = C('TYPE');
+				</php>
+				<foreach name="products" item="vo">
+				<tr>
+					<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[{$vo.tid}]" value="{$vo.id}"></td>
+					<td>{$vo.tid}</td>
+					<td>{$vo.title}</td>
+					<td>{$categories[$vo['category_id']]}</td>
+					<td>{$excerpt_keywords = empty($vo['keywords'])?"":'已填写'}</td>
+					<td>{$vo.brand}</a></td>
+					<td>{$excerpt_keywords = empty($vo['area'])?"":'已填写'}</td>
+					<td>{$business_type[$vo['business_type']]}</td>
+					<td>{$type[$vo['type']]}</td>
+					<td>
+					<php>$smeta=json_decode($vo['smeta'],true);</php>
+					<if condition="!empty($smeta['thumb'])">
+						<a href="{:sp_get_asset_upload_path($smeta['thumb'])}" target='_blank'>查看</a>
+					</if>
+					</td>
+					<td>{$users[$vo['author']]['user_login']}</td>
+					<td>{$vo.date}</td>
+					<td>{$status[$vo['status']]}<br>{$top_status[$vo['istop']]}<br>{$recommend_status[$vo['recommended']]}
+					</td>
+					<td>
+						<a href="{:U('AdminProduct/restore',array('category'=>empty($category['category_id'])?'':$category['category_id'],'id'=>$vo['tid']))}" class="js-ajax-dialog-btn" data-msg="确定还原吗？">还原</a> | 
+						<a href="{:U('AdminProduct/clean',array('category'=>empty($category['category_id'])?'':$category['category_id'],'tid'=>$vo['tid'],'id'=>$vo['id']))}" class="js-ajax-delete">删除</a>
+					</td>
+				</tr>
+				</foreach>
+				<tfoot>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">{:L('SORT')}</th>
+						<th>{:L('TITLE')}</th>
+						<th>{:L('CATEGORY')}</th>
+						<th width="50">{:L('KEYWORDS')}</th>
+						<th width="50">{:L('BRAND')}</th>
+						<th width="50">{:L('AREA')}</th>
+						<th width="50">{:L('BUSINESS_TYPE')}</th>
+						<th width="50">{:L('TYPE')}</th>
+						<th width="50">{:L('THUMBNAIL')}</th>
+						<th width="80">{:L('AUTHOR')}</th>
+						<th width="70">{:L('PUBLISH_DATE')}</th>
+						<th width="50">{:L('STATUS')}</th>
+						<th width="70">{:L('ACTIONS')}</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminProduct/clean')}" data-subcheck="true" data-msg="你确定删除吗？">{:L('DELETE')}</button>
+			</div>
+			<div class="pagination">{$Page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

@@ -71,7 +71,13 @@
 							<a href="{:sp_get_asset_upload_path($smeta['thumb'])}" target='_blank'>查看</a>
 						</if>
 					</td>
-					<td>{$users[$vo['post_author']]['user_login']}</td>
+					<td>
+						<if condition="!empty($users[$vo['post_author']]['user_login'])">
+							{$users[$vo['post_author']]['user_login']}
+						<else />
+							{$users[$vo['post_user']]['user_login']}
+						</if>
+					</td>
 					<td>{$vo.post_date}</td>
 					<td>{$status[$vo['post_status']]}<br>{$top_status[$vo['istop']]}<br>{$recommend_status[$vo['recommended']]}
 					</td>

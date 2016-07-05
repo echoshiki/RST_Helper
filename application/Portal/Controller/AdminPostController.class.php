@@ -198,6 +198,7 @@ class AdminPostController extends AdminbaseController {
 		foreach ($users_data as $u){
 			$users[$u['id']]=$u;
 		}
+		
     	$terms = $this->terms_model->order(array("term_id = $term_id"))->getField("term_id,name",true);
 		$this->assign("users",$users);
     	$this->assign("terms",$terms);

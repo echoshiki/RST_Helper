@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
+// | Name : 用户文章模块
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2014 http://www.thinkcmf.com All rights reserved.
+// | Data : 2016.06.20
 // +----------------------------------------------------------------------
-// | Author: Tuolaji <479923197@qq.com>
+// | Author: LiuCheng <echoshiki@outlook.com>
 // +----------------------------------------------------------------------
 namespace Portal\Controller;
 use Common\Controller\MemberbaseController;
@@ -29,7 +29,8 @@ class UserPostController extends MemberbaseController {
 	function add(){
 		$terms 		= $this->terms_model->order(array("listorder"=>"asc"))->select();
 		$term_id 	= intval(I("get.term"));
-		$this->_getTermTree('',"term_id=1 OR parent=1");
+		// $this->_getTermTree('',"term_id=1 OR parent=1");
+		$this->_getTermTree();
 		$term=$this->terms_model->where("term_id=$term_id")->find();
 		$this->assign("author","1");   // 客户文章
 		$this->assign("term",$term);
@@ -184,6 +185,7 @@ class UserPostController extends MemberbaseController {
 		->count();
 			
 		$page = $this->page($count, 20);
+			
 			
 		$posts=$this->term_relationships_model
 		->alias("a")

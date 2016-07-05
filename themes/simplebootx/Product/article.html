@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$title} {$site_name} </title>
+		<meta name="keywords" content="{$post_keywords}" />
+		<meta name="description" content="{$post_excerpt}">
+		<tc_include file="Public:head" />
+		<style>
+			#article_content img{height:auto !important}
+			#article_content {word-wrap: break-word; width:800px;}
+    		.btn { margin-top: 33px;}
+    		.field { 
+    			line-height:38px; 
+				font-size:16px;
+				margin-bottom: 20px
+    		}
+    		.th { 
+    			width:20%;
+				float:left;	
+				text-align: center;
+    		 }
+    		.th-con {
+    			width:75%;
+    			float:left;
+    		}
+    		#photos li {
+				width:130px;
+				float:left;
+    		}
+		</style>
+   		<link href="/public/js/artDialog/skins/default.css" rel="stylesheet" />
+	</head>
+<body class="">
+<tc_include file="Public:nav" />
+<div class="container tc-main">
+	<div class="row">
+		<div class="span9">
+			<div class="tc-box first-box article-box">
+		    	<h2>{$title}</h2>
+		    	<div class="article-infobox">
+		    		<span>{$date} by {$user_nicename|default=$user_login}</span>
+		    		<span>
+						<a href="{:U('user/favorite/do_favorite',array('id'=>$object_id))}" class="js-favorite-btn" data-title="{$post_title}" data-url="{:leuu('article/index',array('id'=>$tid,'cid'=>$term_id))}" data-key="{:sp_get_favorite_key('posts',$object_id)}">
+							<i class="fa fa-star-o"></i>
+						</a>
+					</span>
+		    	</div>
+		    	<hr>
+		    	<php>
+					$business_type_tmp = C('BUSINESS_TYPE');
+					$business_type = $business_type_tmp[$business_type];
+					$type_tmp = C('TYPE');
+					$type = $type_tmp[$type];
+					$status = array("1"=>"已审核","0"=>"未审核");
+					$top_status = array("1"=>"已置顶","0"=>"未置顶");
+					$recommend_status = array("1"=>"已推荐","0"=>"未推荐");
+		    	</php>
+		    	<div id="article_content">
+		    		<div class="field">
+		    			<div class="th">产品名称</div>
+		    			<div class="th-con">{$title}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">封面图片</div>
+		    			<div class="th-con"><img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$title}" width="350" height="220"></div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">行业</div>
+		    			<div class="th-con">{$category[name]}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">关键字</div>
+		    			<div class="th-con">{$keywords}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">品牌</div>
+		    			<div class="th-con">{$brand}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">业务类型</div>
+		    			<div class="th-con">{$business_type}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">产品类型</div>
+		    			<div class="th-con">{$type}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">销售区域</div>
+		    			<div class="th-con">{$area}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">价格说明</div>
+		    			<div class="th-con">{$price_info}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">物流说明</div>
+		    			<div class="th-con">{$ems_info}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">详细说明</div>
+		    			<div class="th-con">{$content}</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    		<div class="field">
+		    			<div class="th">产品图集</div>
+		    			<div class="th-con">
+							<fieldset>
+									<legend>图片列表</legend>
+									<ul id="photos" class="pic-list unstyled">
+										<foreach name="smeta['photo']" item="vo">
+										<php>$img_url=sp_get_asset_upload_path($vo['url']);</php>
+										<li id="savedimage{$key}">
+											<a class="img_a" href="javascript:onClick=image_priview('{$img_url}')"><img class="img_prew" src="{:sp_get_asset_upload_path($vo['url'])}"></img></a>
+										</li>
+										</foreach>
+									</ul>
+								</fieldset>
+
+		    			</div>
+		    			<div class="clearfix"></div>
+		    		</div>
+		    	</div>
+		    	<div>
+					<if condition="!empty($prev)">
+					<a href="{:leuu('article/index',array('id'=>$prev['tid'],'cid'=>$prev['term_id']))}" class="btn btn-primary pull-left">上一篇</a>
+					</if>
+					<if condition="!empty($next)">
+					<a href="{:leuu('article/index',array('id'=>$next['tid'],'cid'=>$next['term_id']))}" class="btn btn-warning pull-right">下一篇</a>
+					</if>
+					<div class="clearfix"></div>
+				</div>
+		    </div>   
+		</div>	
+	</div>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js?t={:time()}"></script>             
+<tc_include file="Public:footer"/>
+</div>
+
+<tc_include file="Public:scripts"/>
+</body>
+</html>

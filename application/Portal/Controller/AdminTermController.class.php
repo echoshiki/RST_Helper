@@ -57,9 +57,9 @@ class AdminTermController extends AdminbaseController {
 	 	
 	 	$new_terms=array();
 	 	foreach ($terms as $r) {
-	 		$r['id']=$r['term_id'];
-	 		$r['parentid']=$r['parent'];
-	 		$r['selected']= (!empty($parentid) && $r['term_id']==$parentid)? "selected":"";
+	 		$r['id'] = $r['term_id'];
+	 		$r['parentid'] = $r['parent'];
+	 		$r['selected'] = (!empty($parentid) && $r['term_id']==$parentid)? "selected":"";
 	 		$new_terms[] = $r;
 	 	}
 	 	$tree->init($new_terms);

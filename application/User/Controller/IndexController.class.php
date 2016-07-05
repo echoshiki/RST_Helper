@@ -38,19 +38,28 @@ class IndexController extends HomebaseController {
     		include UC_CLIENT_ROOT."client.php";
     		echo uc_user_synlogout();
     	}
+
+
+
+
+
+
+
     	session("user",null);//只有前台用户退出
-    	redirect(__ROOT__."/");
+        header("location: http://lxh.yz-rst.com/index.php?c=user&a=logout");
+        
+    	// redirect(__ROOT__."/");
     }
-	
-	public function logout2(){
+
+    public function logout2(){
     	$ucenter_syn=C("UCENTER_ENABLED");
     	$login_success=false;
     	if($ucenter_syn){
     		include UC_CLIENT_ROOT."client.php";
     		echo uc_user_synlogout();
     	}
-		if(isset($_SESSION["user"])){
-		$referer=$_SERVER["HTTP_REFERER"];
+      if(isset($_SESSION["user"])){
+          $referer=$_SERVER["HTTP_REFERER"];
 			session("user",null);//只有前台用户退出
 			$_SESSION['login_http_referer']=$referer;
 			$this->success("退出成功！",__ROOT__."/");
