@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{$site_name}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="{$site_seo_keywords}" />
+  <meta name="description" content="{$site_seo_description}">
+  <tc_include file="Public:userhead"/>
+  <link href="__PUBLIC__/js/artDialog/skins/default.css" rel="stylesheet" />
+  <style>
+      .info-grid { width: 500px; position: relative; top: 20%; left:20%; color: #fff; }
+      .info-th, .info-td { float: left; line-height: 40px; font-size: 18px;}
+      .info-th { width:100px; }
+
+      .info-avatar { float: left; margin: 35px; border: 2px solid #fff;}
+      .info-content { float: left; margin-left:20px;}
+
+      .info-column .btn { color: #fff; background-color: #ec9087; border-radius: 0px !important; margin-top: 30px; }
+
+  </style>
+</head>
+<body>
+  <div class="total-content">
+    <div class="col-md-3 side-bar">
+      <div class="logo text-center">
+        <a href="#"><img src="__TMPL__Public/images/user/logo.png" alt="" /></a>
+      </div>
+      <tc_include file="Public:usernav"/> 
+    </div>
+    <div class="col-md-9 content">
+      <div class="cd-tabs is-ended">
+        <nav>
+          <ul class="cd-tabs-navigation">
+            <li style="width:100%"><a data-content="newsAdd" href="#0" class="selected">个人中心<i> </i></a></li>
+            <div class="clearfix"></div>
+          </ul> 
+        </nav>
+        <ul class="cd-tabs-content" style="height: auto;">          
+          <li data-content="newsAdd" class="selected">
+            <div class="top-men">
+              <div class="tab-pane active" id="one">  
+                <div class="info-grid">
+                  <div class="info-avatar">
+                    <a href="{:U('profile/avatar')}">
+                        <if condition="empty($avatar)">
+                            <img src="__TMPL__/Public/images/headicon_128.png" class="headicon"/>
+                        <else/>
+                            <img src="{:sp_get_user_avatar_url($avatar)}" class="headicon"/>
+                        </if>
+                    </a>
+                  </div>
+                  <div class="info-content">
+                    <div class="info-column">
+                        <div class="info-th">昵称</div>
+                        <div class="info-td">{$user_nicename|default='未填写'}</div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-th">性别</div>
+                        <div class="info-td">
+                          <php> $sexs=array("0"=>"保密","1"=>"程序猿","2"=>"程序媛"); </php>
+                          {$sexs[$sex]}
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-th">生日</div>
+                        <div class="info-td">{$birthday|default='未填写'}</div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-th">个人网址</div>
+                        <div class="info-td">{$user_url|default='未填写'}</div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-th">个性签名</div>
+                        <div class="info-td">{$signature|default='未填写'}</div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <a class="btn" href="{:U('user/profile/edit')}" type="submit">编辑资料</a>
+                    </div>              
+                  </div>
+                  <div style="clear:both"></div>
+                </div>                                    
+              </div>
+            </div>
+          </li>
+          <div class="clearfix"></div>
+        </ul> 
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <tc_include file="Public:userfooter"/>  
+</body>
+
+</html>
+

@@ -15,8 +15,10 @@ class IndexController extends HomebaseController {
 	
     //首页
 	public function index() {
+		// echo "hello";
 		header("location: ".__ROOT__.U('user/login/index'));
-    	$this->display(":index");
+		// $this->success('', U('user/login/index'));
+    	// $this->display(":index");
     }
 
 }

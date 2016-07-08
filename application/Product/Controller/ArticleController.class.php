@@ -62,4 +62,35 @@ class ArticleController extends HomebaseController {
     	$this->display(":$tplname");
     }
     
+    public function show() {
+        $id = intval($_GET['id']);
+
+        $article = sp_sql_post($id,'');
+
+        if(empty($article)){
+            header('HTTP/1.1 404 Not Found');
+            header('Status:404 Not Found');
+            if(sp_template_file_exists(MODULE_NAME."/404")){
+                $this->display(":404");
+            }
+            return ;
+        }
+        $categoryid = $article['category_id'];
+        $category_obj = M("Categories");
+        $category = $category_obj->where("category_id='$categoryid'")->find();
+   
+        $article_id = $article['object_id'];
+
+        $smeta = json_decode($article['smeta'],true);
+        $content_data = sp_content_page($article['content']);
+        $article['content'] = $content_data['content'];
+        $this->assign("page",$content_data['page']);
+        $this->assign($article);
+        $this->assign("smeta",$smeta);
+        $this->assign("category",$category);
+        $this->assign("article_id",$article_id);
+        $this->display(":show");
+    }
+
+
 }

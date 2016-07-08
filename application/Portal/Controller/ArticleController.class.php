@@ -14,7 +14,7 @@ use Common\Controller\HomebaseController;
 class ArticleController extends HomebaseController {
     //文章内页
     public function index() {
-    	$id=intval($_GET['id']);
+    	$id = intval($_GET['id']);
     	$article=sp_sql_post($id,'');
     	if(empty($article)){
     	    header('HTTP/1.1 404 Not Found');
@@ -77,5 +77,38 @@ class ArticleController extends HomebaseController {
     		$this->error("您已赞过啦！");
     	}
     	
+    }
+
+    public function show() {
+        $id = intval($_GET['id']);
+        $article = sp_sql_post($id,'');
+        if(empty($article)){
+            header('HTTP/1.1 404 Not Found');
+            header('Status:404 Not Found');
+            if(sp_template_file_exists(MODULE_NAME."/404")){
+                $this->display(":404");
+            }
+            return ;
+        }
+        $termid = $article['term_id'];
+        $term_obj = M("Terms");
+        $term = $term_obj->where("term_id='$termid'")->find();
+        
+        $article_id = $article['object_id'];
+        
+        $posts_model = M("Posts");
+
+        $article_date = $article['post_modified'];
+                
+        $smeta = json_decode($article['smeta'],true);
+        $content_data = sp_content_page($article['post_content']);
+        $article['post_content'] = $content_data['content'];
+        $this->assign("page",$content_data['page']);
+        $this->assign($article);
+        $this->assign("smeta",$smeta);
+        $this->assign("term",$term);
+        $this->assign("article_id",$article_id);
+
+        $this->display(":show");
     }
 }

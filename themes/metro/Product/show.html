@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{$site_name}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="{$site_seo_keywords}" />
+  <meta name="description" content="{$site_seo_description}">
+  <tc_include file="Public:userhead"/>
+  <link href="__PUBLIC__/js/artDialog/skins/default.css" rel="stylesheet" />
+  <style>
+    .top-men { background-color: #fff !important;}
+   .span9, .span3 { font-size: 17px;  margin-left: 50px; }
+   th {  color: #010101 !important; }
+   .img_a img { width:150px; height:150px; border:1px solid #ccc; }
+   #productInfo li { display:block; }
+  </style>
+</head>
+<body>
+  <div class="total-content">
+    <div class="col-md-3 side-bar">
+      <div class="logo text-center">
+        <a href="#"><img src="__TMPL__Public/images/user/logo.png" alt="" /></a>
+      </div>
+      <tc_include file="Public:usernav"/> 
+    </div>
+    <div class="col-md-9 content">
+      <div class="cd-tabs is-ended">
+        <nav>
+          <ul class="cd-tabs-navigation">
+            <li style="width:100%"><a data-content="newsAdd" href="#0" class="selected">产品详细<i> </i></a></li>
+            <div class="clearfix"></div>
+          </ul> 
+        </nav>
+        <php>
+          $business_type_tmp = C('BUSINESS_TYPE');
+          $business_type = $business_type_tmp[$business_type];
+          $type_tmp = C('TYPE');
+          $type = $type_tmp[$type];
+          $status = array("1"=>"已审核","0"=>"未审核");
+          $top_status = array("1"=>"已置顶","0"=>"未置顶");
+          $recommend_status = array("1"=>"已推荐","0"=>"未推荐");
+        </php>
+        <ul class="cd-tabs-content" style="height: auto;">          
+          <li data-content="newsAdd" class="selected">
+            <div class="top-men">
+              <div class="tab-pane active" id="one">                    
+                  <div class="row-fluid">
+                    <div class="span9">
+                      <table class="table borderless" id="showProduct">
+                        <tr>
+                          <th width="130">行业</th>
+                          <td>{$category[name]}</td>
+                        </tr>
+                        <tr>
+                          <th>产品名称</th>
+                          <td>{$title}</td>
+                        </tr>
+                        <tr>
+                          <th>关键词</th>
+                          <td>{$keywords}</td>
+                        </tr>
+                        <tr>
+                          <th>产品品牌</th>
+                          <td>{$brand}</td>
+                        </tr>
+                        <tr>
+                          <th>业务类型</th>
+                          <td>{$business_type}</td>
+                        </tr>
+                        <tr>
+                          <th>产品类型</th>
+                          <td>{$type}</td>
+                        </tr>
+                        <tr>
+                          <th>销售区域</th>
+                          <td>{$area}</td>
+                        </tr>
+                        <tr>
+                          <th>价格说明</th>
+                          <td>{$price_info}</td>
+                        </tr>
+                        <tr>
+                          <th>物流说明</th>
+                          <td>{$ems_info}</td>
+                        </tr>
+                        <tr>
+                          <th>内容</th>
+                          <td id="productInfo">{$content}</td>
+                        </tr>
+                        <tr>
+                          <th>相册图集</th>
+                          <td style="line-height: 50px;">
+                            <fieldset>
+                              <legend style="font-size:15px;">图片列表</legend>
+                              <ul id="photos" class="pic-list unstyled">
+                                <foreach name="smeta['photo']" item="vo">
+                                  <php>$img_url=sp_get_asset_upload_path($vo['url']);</php>
+                                  <li id="savedimage{$key}"><a class="img_a" href="javascript:onClick=image_priview('{$img_url}')"><img class="img_prew" src="{:sp_get_asset_upload_path($vo['url'])}"></img></a></li>
+                                </foreach>
+                              </ul>
+                            </fieldset>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="span3">
+                      <table class="table borderless">
+                        <tr>
+                          <th width="120"><b>缩略图</b></th>
+                        </tr>
+                        <tr>
+                          <td><img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$title}" width="350" height="220"></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="form-actions" style="margin-left: 50px">
+                    <a class="btn btn-primary js-ajax-submit" href="{:U('UserProduct/edit',array('category'=>empty($category['category_id'])?'':$category['category_id'],'id'=>$id))}">编辑</a>                
+                  </div>
+              </div>
+            </div>
+          </li>
+          <div class="clearfix"></div>
+        </ul> 
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <script type="text/javascript" src="__PUBLIC__/js/content_addtop.js?t={:time()}"></script> 
+  <tc_include file="Public:userfooter"/>  
+  <tc_include file="Public:scripts"/>
+</body>
+
+</html>

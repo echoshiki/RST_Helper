@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{$site_name}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="{$site_seo_keywords}" />
+  <meta name="description" content="{$site_seo_description}">
+  <tc_include file="Public:userhead"/>
+  <link href="__PUBLIC__/js/artDialog/skins/default.css" rel="stylesheet" />
+  <style>
+      .info-grid { width: 500px; position: relative; top: 20%; left: 20%; color: #fff; }
+      .info-th, .info-td { float: left; line-height: 40px; font-size: 18px;}
+      .info-td { color: #101010; }
+      .info-th { width: 100px; }
+
+      .info-content { float: left; margin-left: 20px;}
+      .info-content input, .info-content select, .info-content textarea { width: 300px; margin-bottom: 20px; padding-left: 5px; }
+      .info-content select {  height: 40px; }
+      .info-content textarea { height: 120px; } 
+
+      .info-column .btn { color: #fff; background-color: #ec9087; border-radius: 0px !important; margin-top: 30px; }
+
+  </style>
+</head>
+<body>
+  <div class="total-content">
+    <div class="col-md-3 side-bar">
+      <div class="logo text-center">
+        <a href="#"><img src="__TMPL__Public/images/user/logo.png" alt="" /></a>
+      </div>
+      <tc_include file="Public:usernav"/> 
+    </div>
+    <div class="col-md-9 content">
+      <div class="cd-tabs is-ended">
+        <nav>
+          <ul class="cd-tabs-navigation">
+            <li style="width:100%"><a data-content="newsAdd" href="#0" class="selected">编辑资料<i> </i></a></li>
+            <div class="clearfix"></div>
+          </ul> 
+        </nav>
+        <ul class="cd-tabs-content" style="height: auto;">          
+          <li data-content="newsAdd" class="selected">
+            <div class="top-men">
+              <div class="tab-pane active" id="one">  
+                <div class="info-grid">
+                  <form class="form-horizontal js-ajax-form" action="{:U('profile/edit_post')}" method="post">
+                  <div class="info-content">
+                    <div class="info-column">
+                        <div class="info-th">昵称</div>
+                        <div class="info-td"><input type="text" id="input-user_nicename" placeholder="昵称" name="user_nicename" value="{$user_nicename}"></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-th">性别</div>
+                        <div class="info-td">
+                          <php>  $sexs=array("0"=>"保密","1"=>"程序猿","2"=>"程序媛"); </php>
+                          <select id="input-sex" name="sex">
+                            <foreach name="sexs" item="vo">
+                            <php>$sexselected=$key==$sex?"selected":"";</php>
+                              <option value="{$key}" {$sexselected}>{$vo}</option>
+                            </foreach>
+                          </select>
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-th">生日</div>
+                        <div class="info-td"><input class="js-date" type="text" id="input-birthday" placeholder="2013-01-04" name="birthday" value="{$birthday}"></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-th">个人网址</div>
+                        <div class="info-td"><input type="text" id="input-user_url" placeholder="http://yz-rst.com" name="user_url" value="{$user_url}"></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-th">个性签名</div>
+                        <div class="info-td"><textarea id="input-signature" placeholder="个性签名" name="signature">{$signature}</textarea></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <input class="btn" type="submit" value="编辑资料">
+                    </div>              
+                  </div>
+                  <div style="clear:both"></div>
+                </form>
+                </div>                                    
+              </div>
+            </div>
+          </li>
+          <div class="clearfix"></div>
+        </ul> 
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <tc_include file="Public:userfooter"/> 
+
+<script type="text/javascript">
+//全局变量
+var GV = {
+    DIMAUB: "__ROOT__/",
+    JS_ROOT: "public/js/",
+    TOKEN: ""
+};
+</script>
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="__PUBLIC__/js/jquery.js"></script>
+    <script src="__PUBLIC__/js/wind.js"></script>
+    <script src="__TMPL__Public/simpleboot/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/js/frontend.js"></script>
+</body>
+
+</html>
