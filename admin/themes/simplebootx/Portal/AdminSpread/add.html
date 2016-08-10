@@ -1,0 +1,43 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+	        <li class="active"><a href="#A" data-toggle="tab">添加推广</a></li>
+	    </ul>
+		<form class="form-horizontal js-ajax-form" action="{:U('AdminSpread/add_post')}" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+		          <div class="tab-pane active" id="A">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label">推广平台</label>
+								<div class="controls">
+									<select name="station">
+										<option value="0">选择平台站点</option>
+										<foreach name="sites" item="vo" key="key">
+											<option value="{$key}">{$vo}</option>
+										</foreach>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">推广地址</label>
+								<div class="controls">
+									<input type="text" class="text" name="url" value="" style="width:400px">
+								</div>
+							</div>
+							<input type="hidden" name="post_id" value="{:I('get.post_id')}" />
+						</fieldset>
+		          </div>
+		        </div>
+		    </div>
+		    <div class="form-actions">
+		     	<button class="btn btn-primary js-ajax-submit" type="submit">添加</button>
+		      	<a class="btn" href="{:U('AdminSpread/index/post_id')}/{:I('get.post_id')}">返回</a>
+		    </div>
+		</form>
+	</div>
+	<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

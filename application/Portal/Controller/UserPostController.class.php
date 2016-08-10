@@ -65,13 +65,12 @@ class UserPostController extends MemberbaseController {
 				$this->success("添加成功！");
 			} else {
 				$this->error("添加失败！");
-			}	 
+			}	 	
 		}
 	}
 	
 	public function edit(){
 		$id=  intval(I("get.id"));
-		
 		$term_relationship = M('TermRelationships')->where(array("object_id"=>$id,"status"=>1))->getField("term_id",true);
 		$this->_getTermTree($term_relationship);
 		$terms=$this->terms_model->select();
@@ -121,7 +120,7 @@ class UserPostController extends MemberbaseController {
 		}
 	}
 	
-	//排序
+	// 排序
 	public function listorders() {
 		$status = parent::_listorders($this->term_relationships_model);
 		if ($status) {
@@ -132,7 +131,7 @@ class UserPostController extends MemberbaseController {
 	}
 	
 	private  function _lists($status=1){
-		$term_id=0;
+		$term_id = 0;
 		if(!empty($_REQUEST["term"])){
 			$term_id=intval($_REQUEST["term"]);
 			$term=$this->terms_model->where("term_id=$term_id")->find();
@@ -258,7 +257,7 @@ class UserPostController extends MemberbaseController {
 	function delete(){
 		if(isset($_GET['tid'])){
 			$tid = intval(I("get.tid"));
-			$data['status']=0;
+			$a['status']=0;
 			if ($this->term_relationships_model->where("tid=$tid")->save($data)) {
 				$this->success("删除成功！");
 			} else {
@@ -274,6 +273,16 @@ class UserPostController extends MemberbaseController {
 				$this->error("删除失败！");
 			}
 		}
+	}
+
+	function spread_list() {
+		// 前台推广列表展现
+		
+	}
+
+
+	function media() {
+		$this->display();
 	}
 	
 

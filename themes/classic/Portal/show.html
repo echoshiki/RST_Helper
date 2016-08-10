@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$post_title} {$site_name} </title>
+		<meta name="keywords" content="{$post_keywords}" />
+		<meta name="description" content="{$post_excerpt}">
+		<tc_include file="Public:head" />
+		<style>
+			#article_content img{height:auto !important}
+			#article_content {word-wrap: break-word;}
+    		.btn {margin-top: 33px;}
+		</style>
+	</head>
+<body class="">
+
+<div class="container tc-main">
+	<div class="row">
+		<div class="span12">	
+			<div class="tc-box first-box article-box">
+		    	<h2>{$post_title}</h2>
+		    	<div class="article-infobox">
+		    		<span>{$post_date} by {$user_nicename|default=$user_login}</span>
+		    	</div>
+		    	<hr>
+		    	<div id="article_content">
+		    	{$post_content}
+		    	</div>
+	    	
+		    	{:hook('comment',array(
+		    		'post_id'=>$object_id,
+		    		'post_table'=>'posts',
+		    		'post_title'=>$post_title
+		    	))}
+		    </div>	    
+		</div>
+			
+	</div>
+	<tc_include file="Public:footer"/>
+</div>
+
+<tc_include file="Public:scripts"/>
+</body>
+</html>

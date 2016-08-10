@@ -18,6 +18,8 @@
 	.consoleAct { display: none;  }
 	.men a { color: #fff; text-decoration: none; }
 
+	.newsHelper .top-men { background-color: #fff; }
+
 </style>
 </head>
 <body>
@@ -29,11 +31,13 @@
 			<tc_include file="Public:usernav"/>	
 		</div>
 		<div class="col-md-9 content">
+			<p class="home" style="margin-bottom:20px"><a href="{:U('user/center/index')}">首页</a>><strong>&nbsp;&nbsp;&nbsp;&nbsp;产品中心</strong></p>
 			<div class="cd-tabs is-ended">
 				<nav>
 					<ul class="cd-tabs-navigation">
 						<li><a data-content="newsList" href="#0" class="selected">产品一览<i> </i></a></li>
-						<li><a data-content="newsAdd" href="#1" class="fashion1">添加产品<i> </i></a></li>				
+						<li><a data-content="newsAdd" href="#1" class="fashion1">添加产品<i> </i></a></li>	
+						<li><a data-content="newsHelper" href="#1" class="fashion2">商贸助手<i> </i></a></li>				
 						<div class="clearfix"></div>
 					</ul> 
 				</nav>
@@ -168,6 +172,14 @@
 							</div>
 						</div>
 					</li>
+					<li data-content="newsHelper" class="newsHelper">
+						<div class="top-men">
+							<div class="men">
+								<div class="top"></div>
+								<div></div>
+							</div>
+						</div>
+					</li>
 					<div class="clearfix"></div>
 				</ul> 
 			</div>
@@ -176,10 +188,9 @@
 	</div>
 	<tc_include file="Public:userfooter"/>	
 </body>
-
 </html>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 	//全局变量
 	var GV = {
 	    DIMAUB: "__ROOT__/",
@@ -187,7 +198,7 @@
 	    TOKEN: ""
 	};
 	</script>
-<!-- Le javascript
+	<!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 

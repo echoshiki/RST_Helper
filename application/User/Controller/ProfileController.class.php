@@ -24,6 +24,8 @@ class ProfileController extends MemberbaseController {
         $this->display();
     }
     
+    
+
     public function edit_post() {
     	if(IS_POST){
     		$_POST['id']=$this->userid;

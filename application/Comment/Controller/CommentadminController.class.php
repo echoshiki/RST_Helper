@@ -54,7 +54,8 @@ class CommentadminController extends AdminbaseController{
 	function check(){
 		if(isset($_POST['ids']) && $_GET["check"]){
 			$data["status"]=1;
-				
+			
+
 			$ids=join(",",$_POST['ids']);
 			
 			if ( $this->comments_model->where("id in ($ids)")->save($data)!==false) {

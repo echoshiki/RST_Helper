@@ -32,6 +32,11 @@ ul{
 label{
 	margin:0;
 }
+input, select, textarea {
+	border-radius: 5px;
+
+}
+
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 /*-----start-header----*/
 .side-bar {
@@ -474,7 +479,6 @@ p.home {
 }
 p.home a {
 	  text-decoration: none;
-	margin-top: -2px;
 	display: block;
 	width: 6%;
 	float: left;
@@ -667,9 +671,9 @@ i.go {
   width: 100%;
 }
 .cd-tabs-navigation li {
-  float: left;
-  list-style:none;
-    width: 50%;
+  	float: left;
+  	list-style:none;
+    width: 33.3%;
 }
 .cd-tabs-navigation a {
   position: relative;
@@ -679,7 +683,7 @@ i.go {
   -moz-osx-font-smoothing: grayscale;
 	font-size:1.8em;
 	color:#fff;
-	background:#f1c40f;
+	background:#34495e;
 	font-weight:400;
 	text-decoration: none;
 	padding:1em 0;
@@ -749,7 +753,7 @@ i.go {
 }
 .top-men {
 	padding: 4em 4em 5em 4em;
-	background: #e74c3c;
+	background: #2980b9;
 }
 .men-grid h6 {	
 	color: #fff;
@@ -1827,12 +1831,12 @@ button#focus-single,button#focus-multiple,button#focus-coords,button#focus-init 
 
 .borderless .btn {
 	color: #fff;
-    background-color: #ec9087;
+    background-color: #1b93e1;
     border-radius:0px !important;
 }
 
 .form-actions .btn-primary {
-	background-color:#ec9087 !important;
+	background-color:#1b93e1 !important;
 	width:350px;
 	border-radius:0px !important;
 	border:0px !important;
@@ -1849,3 +1853,11 @@ button#focus-single,button#focus-multiple,button#focus-coords,button#focus-init 
 #show_post h2 {
 	margin-bottom: 10px;
 }
+
+.consoleAct { display:inline; }
+.newsMedia .men { float: left; height: 360px;  margin-right:40px; color: #fff; margin-bottom:20px;  }
+.newsMedia .grid-men { width: 230px; height: 230px; float: none; text-align: center; margin-bottom: 20px !important; background-color: #fff; border:3px solid #ccc;}
+.newsMedia .grid-men img { width: 80%; height: 60px; position: relative; top: 35%; left: 10%;}
+.newsMedia .grid-info { text-align: center;  }
+.newsMedia .consoleAct { display: none;  }
+.newsMedia .men a { color: #fff; text-decoration: none; }

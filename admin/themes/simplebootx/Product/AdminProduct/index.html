@@ -60,8 +60,8 @@
 				<tr>
 					<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.tid}" title="ID:{$vo.tid}"></td>
 					<td><input name="listorders[{$vo.tid}]" class="input input-order" type="text" size="5" value="{$vo.listorder}" title="ID:{$vo.tid}"></td>
-					<td><a href="{:U('product/article/index',array('id'=>$vo['tid']))}" target="_blank"> <span>{$vo.title}</span></a></td>
-					<td><?php print_r($category); ?></td>
+					<td><a href="{:U('product/article/show',array('id'=>$vo['tid']))}" target="_blank"> <span>{$vo.title}</span></a></td>
+					<td>{$categories[$vo['category_id']]}</td>
 					<td>{$excerpt_keywords = empty($vo['keywords'])?"":'已填写'}</td>
 					<td>{$vo.brand}</a></td>
 					<td>{$excerpt_keywords = empty($vo['area'])?"":'已填写'}</td>

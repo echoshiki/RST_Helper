@@ -1,0 +1,164 @@
+/* =============================================================================
+   HTML5 CSS Reset Minified - Eric Meyer
+   ========================================================================== */
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{overflow:hidden !important;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;text-decoration:none; color:#555;}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+li{list-style:none}
+
+canvas{
+  display:block;
+  vertical-align:bottom;
+}
+
+/* ---- particles.js container ---- */
+#particles-js{
+    width: 100%;
+    height: 100%;
+    background-color: #f7fafc;
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.main {
+    width:430px;
+    position: absolute;
+    top:15%;
+    left:50%;
+    z-index: 1000;
+    min-height:600px;
+    margin-left:-215px;
+    text-align: center;
+    font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
+}
+
+.login-logo {
+    position: relative;
+    left: -10px;
+    margin-bottom:20px;
+    background-image:url(../images/login-logo.png);
+    background-repeat: none;
+    width:100%;
+    height:175px;
+}
+
+.login-tab {
+    width:100%;
+    margin-bottom:20px;
+}
+
+.login-tab-con {
+    margin:0 auto;
+    width:150px;
+    font-size:18px;
+    color:#555;
+    position: relative;
+}
+
+.login-tab-con a {
+    float:left;
+    width:75px;
+    line-height:36px;
+}
+
+.current-line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 0 .9em;
+    width: 2.4em;
+    height: 2px;
+    background: #0f88eb;
+}
+
+.current {
+    color:#0f88eb;
+}
+
+.login-input-con {
+    width: 300px;
+    border: 1px solid #d5d5d5;
+    border-radius: 4px;
+    margin:0 auto;
+    background-color: #fff;
+}
+
+.login-input-con input {
+    border: 0;
+    border-radius: 0;
+    padding: 1em .8em;
+    width: 90%;
+    font-size:15px;
+    outline:none;
+    font-family: "微软雅黑";
+}
+
+.verify_1 {
+    width: 180px;
+    float: left;
+}
+
+.verify_2 img {
+    display: block;
+}
+
+
+.input-bottom {
+    border-bottom:1px solid #d5d5d5;
+}
+
+
+
+.login-submit-con {
+    margin:15px auto;
+    width: 300px;
+}
+
+.login-submit button {
+    background: #0f88eb;
+    box-shadow: none;
+    border: 0;
+    border-radius: 3px;
+    display: block;
+    padding: 0;
+    width: 100%;
+    font-size: 15px;
+    line-height: 38px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    outline: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0); 
+    font-family: "微软雅黑";
+}
+
+.login-third-con {
+    width: 300px;
+    margin:0 auto;
+    text-align: left;
+    
+}
+
+.login-third-con span {
+    line-height: 36px;
+    font-size:14px;
+    color:#5d5d5d;
+}
+
+
+

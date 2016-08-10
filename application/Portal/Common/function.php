@@ -339,3 +339,14 @@ function sp_admin_get_tpl_file_list(){
 	}
 	return $tpl_files;
 }
+
+
+/**
+ * 获取文章推广条数
+ * @return int
+ */
+function get_spread_count($post_id = "") {
+	$map['post_id'] = $post_id;
+	$num = M('Spread')->where($map)->count();
+	return $num;
+}

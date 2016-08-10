@@ -87,7 +87,7 @@ class ArticleController extends HomebaseController {
             header('Status:404 Not Found');
             if(sp_template_file_exists(MODULE_NAME."/404")){
                 $this->display(":404");
-            }
+            } 
             return ;
         }
         $termid = $article['term_id'];
@@ -96,19 +96,17 @@ class ArticleController extends HomebaseController {
         
         $article_id = $article['object_id'];
         
-        $posts_model = M("Posts");
-
-        $article_date = $article['post_modified'];
-                
-        $smeta = json_decode($article['smeta'],true);
-        $content_data = sp_content_page($article['post_content']);
-        $article['post_content'] = $content_data['content'];
+        $smeta=json_decode($article['smeta'],true);
+        $content_data=sp_content_page($article['post_content']);
+        $article['post_content']=$content_data['content'];
         $this->assign("page",$content_data['page']);
         $this->assign($article);
         $this->assign("smeta",$smeta);
         $this->assign("term",$term);
         $this->assign("article_id",$article_id);
-
+        
+        $tplname=$term["one_tpl"];
+        $tplname=sp_get_apphome_tpl($tplname, "article");
         $this->display(":show");
     }
 }

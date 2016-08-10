@@ -1,0 +1,62 @@
+<admintpl file="header" />
+</head>
+<body style="min-width: 800px;">
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('AdminSpread/index')}">推广列表</a></li>
+		</ul>
+		<form class="js-ajax-form" method="post">
+			<div class="table-actions">
+				<a class="btn btn-primary btn-small" href="{:U('AdminSpread/add',array('post_id'=>I('get.post_id')))}">添加</a>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminSpread/delete')}" data-subcheck="true" data-msg="{:L('DELETE_CONFIRM_MESSAGE')}">删除</button>
+			</div>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">ID</th>
+						<th width="100">推广平台</th>
+						<th>推广地址</th>
+						<th width="150">操作员</th>
+						<th width="150">推广时间</th>
+						<th width="150">操作</th>
+					</tr>
+				</thead>
+				<foreach name="data" item="vo">
+				<tr>
+					<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.id}"></td>
+					<td>{$vo.id}</td>
+					<td>{$vo.station}</td>
+					<td><a href="{$vo.url}" target="_blank">点击链接</a></td>
+					<td>{$vo.consoler}</td>
+					<td>{$vo.date}</td>
+					<td>
+						<a target="_blank" href="{:U('portal/article/show',array('id'=>$vo['post_id']))}">查看原文</a> 
+						<a href="{:U('AdminSpread/edit',array('id'=>$vo['id']))}">{:L('EDIT')}</a>
+						<a href="{:U('AdminSpread/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+					</td>
+				</tr>
+				</foreach>
+				<tfoot>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">ID</th>
+						<th width="100">推广平台</th>
+						<th>推广地址</th>
+						<th width="150">操作员</th>
+						<th width="150">推广时间</th>
+						<th width="150">操作</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminSpread/add',array('post_id'=>I('get.post_id')))}" data-subcheck="true">添加</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminSpread/delete')}" data-subcheck="true" data-msg="{:L('DELETE_CONFIRM_MESSAGE')}">删除</button>
+			</div>
+			<input type="hidden" name="post_id" value="{$_GET['post_id']}">
+			<div class="pagination">{$Page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

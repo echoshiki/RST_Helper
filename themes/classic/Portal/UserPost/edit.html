@@ -1,0 +1,282 @@
+<tc_include file="Public:userhead" />
+<link href="__PUBLIC__/js/artDialog/skins/default.css" rel="stylesheet" />
+  <div class="span9">
+   
+    <h1 class="page-title">
+      <i class="icon-home"></i> 新闻助手          
+    </h1>
+    <div class="widget-header">
+        <i class="icon-th-list"></i>
+        <h3>编辑新闻</h3>
+  	</div> <!-- /widget-header --> 
+  	<div class="widget-content">
+  		<form action="{:U('UserPost/edit_post')}" method="post" class="form-horizontal js-ajax-forms" enctype="multipart/form-data">
+  			<div class="row-fluid">
+  				<div class="span9">
+  					<table class="table table-striped table-bordered table-portal">
+  						<tr>
+  							<th width="80">栏目</th>
+  							<td>
+  								<select multiple="multiple" style="max-height: 100px;"name="term[]">{$taxonomys}</select>
+  							</td>
+  						</tr>
+  						<tr>
+  							<th>标题</th>
+  							<td>
+  								<input type="hidden" name="post[id]" value="{$post.id}">
+  								<input type="text" style="width: 400px;" name="post[post_title]" required value="{$post.post_title}" placeholder="请输入标题"/>
+  								<span class="form-required">*</span>
+  							</td>
+  						</tr>
+  						<tr>
+  							<th>关键词</th>
+  							<td>
+  								<input type="text" name="post[post_keywords]" style="width: 400px" value="{$post['post_keywords']}" placeholder="请输入关键字">
+  								<div>多关键词之间用空格或者英文逗号隔开</div>
+  							</td>
+  						</tr>
+
+  						<tr>
+  							<th>文章来源</th>
+  							<td>
+  								<input type="text" name="post[post_source]" value="{$post['post_source']}" style="width: 400px" placeholder="请输入文章来源">
+  							</td>
+  						</tr>
+  						<tr>
+  							<th>摘要</th>
+  							<td>
+  								<textarea name="post[post_excerpt]" required style="width: 98%; height: 50px;" placeholder="请填写摘要">{$post.post_excerpt}</textarea>
+  								<span class="form-required"></span>
+  							</td>
+  						</tr>
+  						<tr>
+  							<th>内容</th>
+  							<td>
+  								<script type="text/plain" id="form-content" name="post[post_content]">{$post.post_content}</script>
+  							</td>
+  						</tr>
+  						<tr>
+  							<th>相册图集</th>
+  							<td>
+  								<fieldset>
+  									<legend>图片列表</legend>
+  									<ul id="photos" class="pic-list unstyled">
+  										<foreach name="smeta['photo']" item="vo">
+  											<php>$img_url=sp_get_asset_upload_path($vo['url']);</php>
+  											<li id="savedimage{$key}">
+  												<input type="text" name="photos_url[]" value="{$img_url}" title="双击查看" style="width: 310px;height:48px;" ondblclick="image_priview(this.value);" class="input image-url-input"> 
+  												<input type="text" name="photos_alt[]" value="{$vo.alt}" style="width: 160px;height:48px;" class="input image-alt-input" onfocus="if(this.value == this.defaultValue) this.value = ''" onblur="if(this.value.replace(' ','') == '') this.value = this.defaultValue;">
+  												<a class="img_a" href="javascript:onClick=image_priview('{$img_url}')"><img class="img_prew" src="{:sp_get_asset_upload_path($vo['url'])}" style="height:50px;"></img></a>
+  												<a href="javascript:flashupload('replace_albums_images', '图片替换','savedimage{$key}',replace_image,'10,gif|jpg|jpeg|png|bmp,0','','','')">替换</a>
+  												<a href="javascript:remove_div('savedimage{$key}')">移除</a>
+  											</li>
+  										</foreach>
+  									</ul>
+  								</fieldset>
+  								<a href="javascript:;" onclick="javascript:flashupload('albums_images', '图片上传','photos',change_images,'10,gif|jpg|jpeg|png|bmp,0','','','')" class="btn btn-small">选择图片</a>
+  							</td>
+  						</tr>
+  					</table>
+  				</div>
+  				<div class="span3">
+  					<table class="table table-striped table-bordered">
+  						<tr>
+  							<td><b>缩略图</b></td>
+  						</tr>
+  						<tr>
+  							<td>
+  								<div style="text-align: center;">
+  									<input type="hidden" name="smeta[thumb]" id="thumb" value="{$smeta.thumb|default=''}">
+  									<a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+  										<if condition="empty($smeta['thumb'])">
+  											<img src="__TMPL__Public/images/default-thumbnail.png" id="thumb_preview" width="135" style="cursor: hand"/>
+  											<else />
+  											<img src="{:sp_get_asset_upload_path($smeta['thumb'])}" id="thumb_preview" width="135" style="cursor: hand"/>
+  										</if>
+  									</a>
+  									<input type="button" class="btn btn-small" onclick="$('#thumb_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb').val('');return false;" value="取消图片"  style="margin-top:10px">
+  								</div>
+  							</td>
+  						</tr>
+  						<tr>
+  							<th>发布时间</th>
+  						</tr>
+  						<tr>
+  							<td><input type="text" name="post[post_modified]" value="{$post.post_modified}" class="js-datetime" style="width: 160px;"></td>
+  						</tr>								
+  					</table>
+  				</div>
+  			</div>
+  			<div class="form-actions">
+  				<button class="btn btn-primary js-ajax-submit" type="submit">提交</button>
+  				<a class="btn" href="{:U('UserPost/index')}">返回</a>
+  			</div>
+  		</form>
+  	</div>
+  </div> <!-- /span9 -->
+<tc_include file="Public:userfooter" />
+
+
+
+	<script type="text/javascript">
+	//全局变量
+	var GV = {
+	    DIMAUB: "__ROOT__/",
+	    JS_ROOT: "public/js/",
+	    TOKEN: ""
+	};
+	</script>
+	<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="__PUBLIC__/js/jquery.js"></script>
+    <script src="__PUBLIC__/js/wind.js"></script>
+    <script src="__PUBLIC__/simpleboot/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/js/frontend.js"></script>
+	<if condition="APP_DEBUG">
+		<style>
+			#think_page_trace_open{
+				z-index:9999;
+			}
+		</style>
+	</if>	
+
+	<!-- 编辑器 -->
+	<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js?t={:time()}"></script>
+	<script type="text/javascript">
+		//编辑器路径定义
+		var editorURL = GV.DIMAUB;
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			/////---------------------
+			Wind.use('validate', 'ajaxForm', 'artDialog', function() {
+				//编辑器
+				editorcontent = new baidu.editor.ui.Editor();
+				editorcontent.render('form-content');
+				try {
+					editorcontent.sync();
+				} catch (err) { }
+				//增加编辑器验证规则
+				jQuery.validator.addMethod('editorcontent', function() {
+					try {
+						editorcontent.sync();
+					} catch (err) { };
+					return editorcontent.hasContents();
+				});
+				var form = $('form.js-ajax-forms');
+				//ie处理placeholder提交问题
+				if ($.browser.msie) {
+					form.find('[placeholder]').each(function() {
+						var input = $(this);
+						if (input.val() == input.attr('placeholder')) {
+							input.val('');
+						}
+					});
+				}
+				//表单验证开始
+				form.validate({
+					//是否在获取焦点时验证
+					onfocusout : false,
+					//是否在敲击键盘时验证
+					onkeyup : false,
+					//当鼠标掉级时验证
+					onclick : false,
+					//验证错误
+					showErrors : function(errorMap, errorArr) {
+						//errorMap {'name':'错误信息'}
+						//errorArr [{'message':'错误信息',element:({})}]
+						try {
+							$(errorArr[0].element).focus();
+							art.dialog({
+								id : 'error',
+								icon : 'error',
+								lock : true,
+								fixed : true,
+								background : "#CCCCCC",
+								opacity : 0,
+								content : errorArr[0].message,
+								cancelVal : '确定',
+								cancel : function() {
+									$(errorArr[0].element).focus();
+								}
+							});
+						} catch (err) {
+						}
+					},
+					//验证规则
+					rules : {
+						'post[post_title]' : {
+							required : 1
+						},
+						'post[post_content]' : {
+							editorcontent : true
+						}
+					},
+					//验证未通过提示消息
+					messages : {
+						'post[post_title]' : {
+							required : '请输入标题'
+						},
+						'post[post_content]' : {
+							editorcontent : '内容不能为空'
+						}
+					},
+					//给未通过验证的元素加效果,闪烁等
+					highlight : false,
+					//是否在获取焦点时验证
+					onfocusout : false,
+					//验证通过，提交表单
+					submitHandler : function(forms) {
+						$(forms).ajaxSubmit({
+							url : form.attr('action'), //按钮上是否自定义提交地址(多按钮情况)
+							dataType : 'json',
+							beforeSubmit : function(arr, $form, options) {
+
+							},
+							success : function(data, statusText, xhr, $form) {
+								if (data.status) {
+									setCookie("refersh_time", 1);
+									//添加成功
+									Wind.use("artDialog", function() {
+										art.dialog({
+											id : "succeed",
+											icon : "succeed",
+											fixed : true,
+											lock : true,
+											background : "#CCCCCC",
+											opacity : 0,
+											content : data.info,
+											button : [ {
+												name : '继续编辑？',
+												callback : function() {
+													//reloadPage(window);
+													return true;
+												},
+												focus : true
+											}, {
+												name : '返回列表页',
+												callback : function() { 
+													location = "{:U('UserPost/index')}";
+													return true;
+												}
+											} ]
+										});
+									});
+
+								} else {
+									isalert(data.info);
+								}
+							}
+						});
+					}
+				});
+			});
+			////-------------------------
+		});
+	</script>
+
+

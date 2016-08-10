@@ -1,0 +1,203 @@
+<tc_include file="Public:userhead" />
+
+<div class="span9">
+
+  <h1 class="page-title">
+    <i class="icon-th-large"></i> 个人设置      
+  </h1>
+
+  <div class="row">
+    <div class="span9">
+      <div class="widget">
+        <div class="widget-header">
+          <h3>基本信息</h3>
+        </div> <!-- /widget-header -->
+
+        <div class="widget-content">
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#1" data-toggle="tab">个人设置</a>
+              </li>
+              <li><a href="#2" data-toggle="tab">认证资料</a></li>
+            </ul>
+            
+            <br />
+            
+            <div class="tab-content">
+              <div class="tab-pane active" id="1">
+                <form class="form-horizontal js-ajax-form" action="{:U('profile/edit_post')}" method="post" id="edit-profile" >
+                <fieldset>
+                  <div class="control-group">                     
+                    <label class="control-label" for="email">头像：</label>
+                    <div class="controls">
+                      <a href="{:U('profile/avatar')}" target="_blank">
+                      <if condition="empty($avatar)">
+                        <img src="__TMPL__/Public/images/headicon_128.png" class="headicon"/>
+                      <else/>
+                        <img src="{:sp_get_user_avatar_url($avatar)}" class="headicon"/>
+                      </if></a>
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+                  <div class="control-group">                     
+                    <label class="control-label" for="username">用户名：</label>
+                    <div class="controls">
+                      <input type="text" class="input-medium disabled" id="username" value="{$user_login}" disabled="" />
+                      <p class="help-block">用户名是为登录而用，不能修改.</p>
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+                  <div class="control-group">                     
+                    <label class="control-label" for="username">密码：</label>
+                    <div class="controls pw">
+                      <a href="{:U('user/profile/password')}" target="_blank">修改</a>
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+                  <div class="control-group">                     
+                    <label class="control-label" for="firstname">昵称：</label>
+                    <div class="controls">
+                      <input type="text" id="input-user_nicename" placeholder="昵称" name="user_nicename" value="{$user_nicename}" />
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+                  <div class="control-group">                     
+                    <label class="control-label" for="lastname">性别：</label>
+                    <div class="controls">
+                      <php>  $sexs=array("0"=>"保密","1"=>"男","2"=>"女"); </php>
+                      <select id="input-sex" name="sex">
+                        <foreach name="sexs" item="vo">
+                        <php>$sexselected=$key==$sex?"selected":"";</php>
+                          <option value="{$key}" {$sexselected}>{$vo}</option>
+                        </foreach>
+                      </select>
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+                  <div class="control-group">                     
+                    <label class="control-label" for="email">生日：</label>
+                    <div class="controls">
+                      <input class="js-date" type="text" id="input-birthday" placeholder="2013-01-04" name="birthday" value="{$birthday}" />
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+                  <div class="control-group">                     
+                    <label class="control-label" for="email">个人网址：</label>
+                    <div class="controls">
+                      <input type="text" id="input-user_url" placeholder="http://yz-rst.com" name="user_url" value="{$user_url}" />
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+                  <div class="control-group">                     
+                    <label class="control-label" for="email">个性签名：</label>
+                    <div class="controls">
+                      <textarea id="input-signature" placeholder="个性签名" name="signature">{$signature}</textarea>
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+                  
+                  <br />
+                  <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">保存</button> 
+                    <button class="btn">取消</button>
+                  </div> <!-- /form-actions -->
+                </fieldset>
+              </form>
+            </div>
+
+            <div class="tab-pane" id="2">
+              <form id="edit-profile2" class="form-horizontal" />
+              <fieldset>
+                <div class="control-group">
+                  <label class="control-label" for="accounttype">企业类型</label>
+                  <div class="controls">
+                    <label class="radio">
+                      <input type="radio" name="accounttype" value="option1" checked="checked" id="accounttype" />
+                      个体
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="accounttype" value="option2" />
+                      国营
+                    </label>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="accountusername">企业名称</label>
+                  <div class="controls">
+                    <input type="text" class="input-large" id="accountusername" value="掌速通投资扬州有限公司" />
+                    <p class="help-block">填写你的企业名称.</p>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="emailserver">企业许可证号</label>
+                  <div class="controls">
+                    <input type="text" class="input-large" id="emailserver" value="" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="accountpassword">联系电话</label>
+                  <div class="controls">
+                    <input type="text" class="input-large" id="accountpassword" value="" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="accountpassword">企业地址</label>
+                  <div class="controls">
+                    <input type="text" class="input-large" id="accountpassword" value="" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="accountpassword">企业法人</label>
+                  <div class="controls">
+                    <input type="text" class="input-large" id="accountpassword" value="" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="accountpassword">经营范围</label>
+                  <div class="controls">
+                    <input type="text" class="input-large" id="accountpassword" value="" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="accountpassword">所属行业</label>
+                  <div class="controls">
+                    <input type="text" class="input-large" id="accountpassword" value="" />
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="accountadvanced">连通方式</label>
+                  <div class="controls">
+                    <label class="checkbox">
+                      <input type="checkbox" name="accountadvanced" value="option1" checked="checked" id="accountadvanced" />
+                      通过加密连接服务器
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="accounttype" value="option2" />
+                      通过连接下载所有信息
+                    </label>
+                  </div>
+                </div>
+
+                <br />
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">保存</button> <button class="btn">取消</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /widget-content -->
+  </div> <!-- /widget -->
+
+</div> <!-- /span9 -->
+
+<tc_include file="Public:userfooter" />
+<script type="text/javascript">
+//全局变量
+var GV = {
+    DIMAUB: "__ROOT__/",
+    JS_ROOT: "public/js/",
+    TOKEN: ""
+};
+</script>
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="__PUBLIC__/js/wind.js"></script>
+    <script src="__PUBLIC__/js/frontend.js"></script>

@@ -37,16 +37,11 @@
 						<th width="50">{:L('SORT')}</th>
 						<th>{:L('TITLE')}</th>
 						<th>{:L('CATEGORY')}</th>
-						<th width="50">{:L('HITS')}</th>
-						<th width="50">{:L('COMMENT_COUNT')}</th>
-						<th width="50">{:L('KEYWORDS')}</th>
-						<th width="50">{:L('SOURCE')}</th>
-						<th width="50">{:L('ABSTRACT')}</th>
-						<th width="50">{:L('THUMBNAIL')}</th>
+						<th width="80">{:L('KEYWORDS')}</th>
 						<th width="80">{:L('AUTHOR')}</th>
-						<th width="70">{:L('PUBLISH_DATE')}</th>
+						<th width="80">{:L('PUBLISH_DATE')}</th>
 						<th width="50">{:L('STATUS')}</th>
-						<th width="70">{:L('ACTIONS')}</th>
+						<th width="130">{:L('ACTIONS')}</th>
 					</tr>
 				</thead>
 				<php>
@@ -58,19 +53,9 @@
 				<tr>
 					<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.tid}" title="ID:{$vo.tid}"></td>
 					<td><input name="listorders[{$vo.tid}]" class="input input-order" type="text" size="5" value="{$vo.listorder}" title="ID:{$vo.tid}"></td>
-					<td><a href="{:U('portal/article/index',array('id'=>$vo['tid']))}" target="_blank"> <span>{$vo.post_title}</span></a></td>
+					<td><a href="{:U('portal/article/show',array('id'=>$vo['tid']))}" target="_blank"> <span>{$vo.post_title}</span></a></td>
 					<td>{$terms[$vo['term_id']]}</td>
-					<td>{$vo.post_hits}</td>
-					<td><a href="javascript:open_iframe_dialog('{:U('comment/commentadmin/index',array('post_id'=>$vo['id']))}','评论列表')">{$vo.comment_count}</a></td>
-					<td>{$excerpt_keywords = empty($vo['post_keywords'])?"":'已填写'}</td>
-					<td>{$excerpt_source = empty($vo['post_source'])?" ":'已填写'}</td>
-					<td>{$excerpt_excerpt = empty($vo['post_excerpt'])?" ":'已填写'}</td>
-					<td>
-						<php>$smeta=json_decode($vo['smeta'],true);</php>
-						<if condition="!empty($smeta['thumb'])">
-							<a href="{:sp_get_asset_upload_path($smeta['thumb'])}" target='_blank'>查看</a>
-						</if>
-					</td>
+					<td>{$vo['post_keywords']}</td>
 					<td>
 						<if condition="!empty($users[$vo['post_author']]['user_login'])">
 							{$users[$vo['post_author']]['user_login']}
@@ -82,6 +67,9 @@
 					<td>{$status[$vo['post_status']]}<br>{$top_status[$vo['istop']]}<br>{$recommend_status[$vo['recommended']]}
 					</td>
 					<td>
+						<if condition="$vo['post_status'] == 1">
+							<a href="javascript:open_iframe_dialog('{:U('Portal/AdminSpread/index',array('post_id'=>$vo['tid']))}','添加推广')">推广</a> |
+						</if>	
 						<a href="{:U('AdminPost/edit',array('term'=>empty($term['term_id'])?'':$term['term_id'],'id'=>$vo['id']))}">{:L('EDIT')}</a> | 
 						<a href="{:U('AdminPost/delete',array('term'=>empty($term['term_id'])?'':$term['term_id'],'tid'=>$vo['tid']))}" class="js-ajax-delete">{:L('DELETE')}</a></td>
 				</tr>
@@ -92,16 +80,11 @@
 						<th width="50">{:L('SORT')}</th>
 						<th>{:L('TITLE')}</th>
 						<th>{:L('CATEGORY')}</th>
-						<th width="50">{:L('HITS')}</th>
-						<th width="50">{:L('COMMENT_COUNT')}</th>
-						<th width="50">{:L('KEYWORDS')}</th>
-						<th width="50">{:L('SOURCE')}</th>
-						<th width="50">{:L('ABSTRACT')}</th>
-						<th width="50">{:L('THUMBNAIL')}</th>
+						<th width="80">{:L('KEYWORDS')}</th>
 						<th width="80">{:L('AUTHOR')}</th>
-						<th width="70">{:L('PUBLISH_DATE')}</th>
+						<th width="80">{:L('PUBLISH_DATE')}</th>
 						<th width="50">{:L('STATUS')}</th>
-						<th width="70">{:L('ACTIONS')}</th>
+						<th width="120">{:L('ACTIONS')}</th>
 					</tr>
 				</tfoot>
 			</table>

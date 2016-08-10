@@ -9,6 +9,14 @@ $configs = array(
         'article:index' => array('portal/article/{id}',600),
         'index:index' => array('portal/index',600),
         'list:index' => array('portal/list/{id}_{p}',60)
+    ),
+    'SPREAD_SITE' => array(
+        '1' => '百度贴吧',
+        '2' => '新浪微博',
+        '3' => '天涯论坛',
+        '4' => '猫扑社区',
+        '5' => '西祠胡同',
+        '6' => '豆瓣社区'
     )
 );
 

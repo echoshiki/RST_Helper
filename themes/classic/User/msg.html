@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{$site_name}</title>
+    
+    <meta name="keywords" content="{$post_keywords}" />
+    <meta name="description" content="{$post_excerpt}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />    
+    
+    <link href="__TMPL__Public/css/user/bootstrap.min.css" rel="stylesheet" />
+    <link href="__TMPL__Public/css/user/bootstrap-responsive.min.css" rel="stylesheet" />
+    
+    <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" /> -->
+    <link href="__TMPL__Public/css/user/font-awesome.css" rel="stylesheet" />
+    <link href="__TMPL__Public/css/user/adminia.css" rel="stylesheet" /> 
+    <link href="__TMPL__Public/css/user/adminia-responsive.css" rel="stylesheet" /> 
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+          .stat-container {   
+               margin-bottom:26px;    
+               width: 100%;
+          }
+          .stat {  
+               background-color:#949494;
+               width:86%;
+               margin-left:auto;
+               margin-right:auto;
+               position:relative;
+          }
+          .stat {    
+               height: 3px;   
+               margin-top:50px;  
+               background-color: #949494; 
+               border-radius: 5px;
+          }
+          .img_box{position:relative;top:-16px;}
+          .dot_text{float:left;;margin-left:180px;}
+          .dot_text img{margin-left:20px;}
+          .dot_text p{margin-top:10px;font-weight: 600;}
+          .dot_text span{color:#e96500;}
+
+          .stat-container .stat-holder:last-child .stat {
+               margin: 0;
+          }
+          .control-group { margin-bottom: 6px !important; }  
+          .controls { padding-top: 3px;}
+          .widget-content h4 { text-align: center; }
+
+          .sitesView li { list-style: none; float: left; margin: 0px 5px 5px 0px; }
+
+    </style>
+
+  </head>
+
+
+     <body>
+          <div class="container">
+               <div class="span12">
+                    <div class="stat-container">
+                         <div class="stat"></div>
+                         <div class="img_box">
+                              <div class="dot_text">
+                                   <img src="__TMPL__Public/images/user/dot1.png">
+                                   <p>提交新闻稿</p>
+                              </div><!--dot_text-->
+                              <div class="dot_text">
+                                   <img src="__TMPL__Public/images/user/dot2.png">
+                                   <p><span>内容审核优化</span></p>
+                              </div><!--dot_text-->
+                              <div class="dot_text">
+                                   <img src="__TMPL__Public/images/user/dot3.png">
+                                   <p>刊发新闻稿</p>
+                              </div><!--dot_text-->
+                              <div class="clearfix"></div>               
+                         </div><!--img_box-->
+                    </div>  
+                    <div class="widget-content">
+                         <h4>我们将在24小时完成对新闻稿的审核和优化；根据您的推广需求和稿 件内容，本篇新闻稿计划一下媒体中随机选取10家发刊。</h4>
+                         <form class="form-horizontal js-ajax-form" action="#" method="post" id="edit-profile" >
+                              <div class="control-group">                     
+                                   <label class="control-label" for="email">新闻稿标题：</label>
+                                   <div class="controls">
+                                     <span>使用以旧换新的高压釜的危害</span>
+                                   </div> <!-- /controls -->       
+                              </div>
+                              <div class="control-group">                     
+                                   <label class="control-label" for="email">行业分类：</label>
+                                   <div class="controls">
+                                     <span>机械设备</span>
+                                   </div> <!-- /controls -->       
+                              </div>
+                              <div class="control-group">                     
+                                   <label class="control-label" for="email">媒体数量：</label>
+                                   <div class="controls">
+                                     <span>10</span>
+                                   </div> <!-- /controls -->       
+                              </div>
+                         </form>
+                         <div class="sitesView">
+                              <ul>
+                                   <li><img src="__TMPL__/Public/images/user/新浪网.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/搜狐.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/网易.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/慧聪网.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/中国网.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/百家.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/一点资讯.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/北方网.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/新闻传媒网.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/江苏新闻.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/中国企业报道.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/城视网.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/华东信息港.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/美讯.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/杭州热线.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/商洛在线.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/今日热线.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/消费日报网.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/中国商网.png" alt=""></li>
+                                   <li><img src="__TMPL__/Public/images/user/中南信息港.png" alt=""></li>
+                              </ul>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </body>
+
+</html>     

@@ -18,6 +18,7 @@
 			<tc_include file="Public:usernav"/>	
 		</div>
 		<div class="col-md-9 content">
+			<p class="home" style="margin-bottom:20px"><a href="{:U('user/center/index')}">首页</a>><strong>&nbsp;&nbsp;&nbsp;&nbsp;添加新闻</strong></p>
 			<div class="cd-tabs is-ended">
 				<nav>
 					<ul class="cd-tabs-navigation">
@@ -256,7 +257,7 @@
 							url : form.attr('action'), //按钮上是否自定义提交地址(多按钮情况)
 							dataType : 'json',
 							beforeSubmit : function(arr, $form, options) {
-								formloading = true;
+								formloading = true;								
 							},
 							success : function(data, statusText, xhr, $form) {
 								formloading = false;

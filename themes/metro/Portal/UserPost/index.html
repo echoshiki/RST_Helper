@@ -9,9 +9,6 @@
 
 	<tc_include file="Public:userhead"/>
 	<link href="__PUBLIC__/js/artDialog/skins/default.css" rel="stylesheet" />
-	<style>
-		.consoleAct { display:inline; }
-	</style>
 </head>
 <body>
 	<div class="total-content">
@@ -22,11 +19,13 @@
 			<tc_include file="Public:usernav"/>	
 		</div>
 		<div class="col-md-9 content">
+			<p class="home" style="margin-bottom:20px"><a href="{:U('user/center/index')}">首页</a>><strong>&nbsp;&nbsp;&nbsp;&nbsp;新闻中心</strong></p>
 			<div class="cd-tabs is-ended">
 				<nav>
 					<ul class="cd-tabs-navigation">
 						<li><a data-content="newsList" href="#0" class="selected">新闻一览<i> </i></a></li>
-						<li><a data-content="newsAdd" href="#1" class="fashion1">添加新闻<i> </i></a></li>				
+						<li><a data-content="newsAdd" href="#1" class="fashion1">添加新闻<i> </i></a></li>	
+						<li><a data-content="newsMedia" href="#1" class="fashion2">已投放媒体<i> </i></a></li>			
 						<div class="clearfix"></div>
 					</ul> 
 				</nav>
@@ -38,7 +37,7 @@
 								<php> $smeta = json_decode($vo['smeta'],true); </php>
 								<div class="men">
 									<div class="grid-men">
-										<a href="#"><img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$title}" class="img-responsive"> </a>
+										<a href="#"><img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$title}" class="img-responsive"></a>
 									</div>
 									<div class="men-grid">
 										<h6>
@@ -137,6 +136,41 @@
 									</div>
 								</form>
 							</div>
+						</div>
+					</li>
+					<li data-content="newsMedia" class="newsMedia">
+						<div class="top-men">
+							<div class="men">
+								<div class="grid-men">
+									<img src="__PUBLIC__/images/logo/tieba.gif" alt="" class="img-responsive">
+								</div>
+								<div class="grid-info" id="ti-{$vo.tid}">
+									<h4><a href="#">百度贴吧</a></h4>
+									<h5>10 条</h5>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="men">
+								<div class="grid-men">
+									<img src="__PUBLIC__/images/logo/sina.jpg" alt="" class="img-responsive">
+								</div>
+								<div class="grid-info" id="ti-{$vo.tid}">
+									<h4><a href="#">新浪微博</a></h4>
+									<h5>15 条</h5>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="men">
+								<div class="grid-men">
+									<img src="__PUBLIC__/images/logo/netease.gif" alt="" class="img-responsive">
+								</div>
+								<div class="grid-info" id="ti-{$vo.tid}">
+									<h4><a href="#">网易新闻</a></h4>
+									<h5>08 条</h5>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div style="clear:both"></div>
 						</div>
 					</li>
 					<div class="clearfix"></div>

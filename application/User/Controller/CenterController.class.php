@@ -15,4 +15,8 @@ class CenterController extends MemberbaseController {
 		$this->assign($this->user);
     	$this->display(':center');
     }
+
+    public function msg() {
+    	$this->display(':msg');
+    }
 }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{$site_name}</title>
+	<meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+	<meta name="author" content="Vincent Garreau" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="{$site_seo_keywords}" />
+	<meta name="description" content="{$site_seo_description}">
+	<link rel="stylesheet" media="screen" href="__TMPL__Public/css/login.css">
+
+</head>
+
+<body id="particles-js">		
+	<div class="main">
+		<div class="login-logo"></div>
+		<div class="login-tab">
+			<div class="login-tab-con">
+				<a href="javascript:void(0);" id="login-btn" class="current">登录</a>
+				<a href="javascript:void(0);" id="reg-btn">注册</a>
+				<span class="current-line"></span>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<div class="login-main" id="login-form" style="display:block">
+			<form class="form-horizontal js-ajax-forms" action="{:U('user/login/dologin')}" method="post">
+			<div class="login-input">
+				<div class="login-input-con">
+					<div class="input-username input-bottom">
+						<input type="text" name="username" placeholder="输入用户名/邮箱" autocomplete="off" required/>
+					</div>
+					<div class="input-password input-bottom">
+						<input type="password" name="password" placeholder="输入密码" required>
+					</div>
+					<div class="input-checkcode">
+						<div class="verify_1"><input type="text" id="input_verify" name="verify" placeholder="验证码"></div>
+						<div class="verify_2">{:sp_verifycode_img('length=4&font_size=18&width=120&height=50&charset=2345678&use_noise=1&use_curve=0')}</div>	
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</div>
+			<div class="login-submit">
+				<div class="login-submit-con">
+					<button type="submit">登录</button>
+				</div>
+			</div>
+			<div class="login-third">
+				<div class="login-third-con">
+					<a href="javascript"><span>社会化登录</span></a>
+					<a href="{:U('user/login/forgot_password')}" style="float:right"><span>忘记密码？</span></a>
+				</div>
+			</div>
+			</form>						
+		</div>
+		<div class="login-main" id="reg-form" style="display:none">
+			<form class="form-horizontal js-ajax-form" action="{:U('user/register/doregister')}" method="post">
+			<div class="login-input">
+				<div class="login-input-con">
+					<div class="input-username input-bottom">
+						<input type="text" name="email" placeholder="输入邮箱" autocomplete="off" required="email"/>
+					</div>
+					<div class="input-password input-bottom">
+						<input type="password" name="password" placeholder="输入密码" required>
+					</div>
+					<div class="input-password input-bottom">
+						<input type="password" name="repassword" placeholder="重复密码" required>
+					</div>
+					<div class="input-checkcode">
+						<div class="verify_1"><input type="text" id="input_verify" name="verify" placeholder="验证码"></div>
+						<div class="verify_2">{:sp_verifycode_img('length=4&font_size=18&width=120&height=50&charset=2345678&use_noise=1&use_curve=0')}</div>	
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</div>
+			<div class="login-submit">
+				<div class="login-submit-con">
+					<button type="submit">注册</button>
+				</div>
+			</div>
+			</form>						
+		</div>
+
+	</div>
+
+	<!-- scripts -->
+	<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<script src="__TMPL__Public/js/particles/particles.js"></script>
+	<script src="__TMPL__Public/js/particles/app.js"></script>
+	<script src="__TMPL__Public/js/me.js"></script>
+	<tc_include file="Public:scripts" />
+</body>
+</html>

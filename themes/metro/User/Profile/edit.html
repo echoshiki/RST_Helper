@@ -32,6 +32,7 @@
       <tc_include file="Public:usernav"/> 
     </div>
     <div class="col-md-9 content">
+      <p class="home" style="margin-bottom:20px"><a href="{:U('user/center/index')}">首页</a>><strong>&nbsp;&nbsp;&nbsp;&nbsp;编辑资料</strong></p>
       <div class="cd-tabs is-ended">
         <nav>
           <ul class="cd-tabs-navigation">
@@ -54,7 +55,7 @@
                     <div class="info-column">
                         <div class="info-th">性别</div>
                         <div class="info-td">
-                          <php>  $sexs=array("0"=>"保密","1"=>"程序猿","2"=>"程序媛"); </php>
+                          <php>  $sexs=array("0"=>"保密","1"=>"男","2"=>"女"); </php>
                           <select id="input-sex" name="sex">
                             <foreach name="sexs" item="vo">
                             <php>$sexselected=$key==$sex?"selected":"";</php>

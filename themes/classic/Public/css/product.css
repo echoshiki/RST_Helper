@@ -1,0 +1,39 @@
+ul{list-style: none; padding: 0; margin: 0;}
+.widget-header h3>div {float: left;line-height: 40px; border-right:1px solid #ddd;}
+.col-3{ width: 31%; float: left; margin: 0 5px 10px 5px ;}
+.seller-warp{ width: 100%; position: relative; border:1px solid #ddd; text-align: center;}
+.icon-nostart{ background-image: url(img/nopen.png) no-repeat; width: 150px; height: 50px; position: absolute; top: -3px; right: 40px; display: block;}
+.seller-header{background: #fff;padding: 10px;border-bottom: 1px solid #eee;}
+.seller-header img{ margin: 0 auto; max-width: 100%;}
+.seller-num{ float: left;}
+.widget-header h3{ top: 0; left: 0;height: 100%;}
+.seller-icon-img{ float: right;}
+.seller-body{ padding: 5px 0px 0px 0px;}
+.seller-body p{margin-bottom: 0px;}
+.seller-body img{ width: 44.8%;}
+.seller-icon{ padding: 5px 0;}
+.seller-icon{ text-align: left; font-size: 12px;}
+.seller-footer a{ display: inline-block; width: 100%; padding: 10px 0;  background: #3C4049; color: #FFFFFF; text-decoration: none;}
+@media (min-width:1200px){.col-3{ width:32% ;}}
+@media (max-width:736px){.col-3{ width:100% ; }}
+span.cols {cursor: pointer;height: 100%;display: inline-block; padding: 0 10px;}
+.tab_add{ background: #fff; padding: 0 10px; line-height: 41px;}
+.seller-icon span{ margin-left: 5px; display: inline-block;}
+.seller-icon span i{ display: inline-block; width: 13px; height:15px;}
+.seller-icon span i.s-btn{ background: url(img/icon-btn.png) no-repeat -23px center;}
+.seller-icon span i.q-btn{ background: url(img/icon-btn.png) no-repeat -12px center;}
+.seller-icon span i.b-btn{ background: url(img/icon-btn.png) no-repeat 0px center;}
+@media (min-width:737px) and (max-width:1199px){
+	.seller-icon span{ width: 100%; display: block; text-align: center;}
+}
+.seller-btn{ float: right; margin-right: 5px;}
+.seller-icon .seller-text i{ color: #f89406;  margin-right: 5px; display: inline-block; width: 18px;font-style: normal; font-weight: bold;}
+
+
+/*产品管理*/
+.product-img{ border-bottom: 1px solid #ddd;}
+.product-img img{ max-width: 100%; display: block; margin: 0 auto;}
+.product-content{  text-align: left; padding:5px 10px;}
+.product-content h5{ text-align:center; line-height: 20px; overflow: hidden; margin: 0px; color: #f89406; font-size: 14px; height: 20px;overflow: hidden;}
+
+.product-content span{ margin: 0px; text-align: center; line-height: 20px; color: #4a4949; display: block; height: 20px; overflow: hidden;}

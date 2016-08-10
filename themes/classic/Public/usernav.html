@@ -1,0 +1,62 @@
+<?php 
+  $menuArray = array(
+          array(
+            'title' => '中心首页',
+            'path'  => U('user/center/index'),
+            'icon'  => 'icon-home',
+            'cname' => 'Center'
+          ),
+          array(
+            'title' => '新闻助手',
+            'path'  => U('portal/UserPost/index'),
+            'icon'  => 'icon-pushpin',
+            'cname' => 'UserPost',
+            'new'   => '5'
+          ),
+          array(
+            'title' => '商贸联盟',
+            'path'  => U('product/UserProduct/index'),
+            'icon'  => 'icon-shopping-cart',
+            'cname' => 'UserProduct'
+          ),
+          array(
+            'title' => '数据分析',
+            'path'  => U('user/data/index'),
+            'icon'  => 'icon-th-list',
+            'cname' => 'Data'
+          ),
+          array(
+            'title' => '微场景',
+            'path'  => U('user/profile/scenelogin'),
+            'icon'  => 'icon-camera-retro',
+            'cname' => 'Other',
+            'target'=> '1'
+          ),
+          array(
+            'title' => '个人设置',
+            'path'  => U('user/profile/edit'),
+            'icon'  => 'icon-th-large',
+            'cname' => 'Profile'
+          ),
+          array(
+            'title' => '登出系统',
+            'path'  => U('user/index/logout'),
+            'icon'  => 'icon-signal',
+            'cname' => ''
+          ),
+    );
+    $cname = CONTROLLER_NAME;
+ ?>
+
+<ul id="main-nav" class="nav nav-tabs nav-stacked">
+  <foreach name="menuArray" item="vo">
+    <li <?php if($cname == $vo['cname']){ ?> class="active" <?php } ?>>
+      <a href="{$vo.path}" <?php if($vo['target']){ ?> target="_blank" <?php } ?> >
+        <i class="{$vo.icon}"></i> {$vo.title}  
+        <?php if ($vo['new']) { ?>
+            <span class="label label-warning pull-right">{$vo.new}</span>
+        <?php } ?> 
+      </a>
+    </li>
+  </foreach>
+</ul> 

@@ -29,6 +29,7 @@
       <tc_include file="Public:usernav"/> 
     </div>
     <div class="col-md-9 content">
+      <p class="home" style="margin-bottom:20px"><a href="{:U('user/center/index')}">首页</a>><strong>&nbsp;&nbsp;&nbsp;&nbsp;个人中心</strong></p>
       <div class="cd-tabs is-ended">
         <nav>
           <ul class="cd-tabs-navigation">
@@ -57,9 +58,19 @@
                         <div style="clear:both"></div>
                     </div>
                     <div class="info-column">
+                        <div class="info-th">新闻条数</div>
+                        <div class="info-td">10 条</div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-th">产品条数</div>
+                        <div class="info-td">20 条</div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="info-column">
                         <div class="info-th">性别</div>
                         <div class="info-td">
-                          <php> $sexs=array("0"=>"保密","1"=>"程序猿","2"=>"程序媛"); </php>
+                          <php> $sexs=array("0"=>"保密","1"=>"男","2"=>"女"); </php>
                           {$sexs[$sex]}
                         </div>
                         <div style="clear:both"></div>
